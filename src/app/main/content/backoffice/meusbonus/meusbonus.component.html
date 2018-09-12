@@ -1,0 +1,77 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+ 
+  <!-- CONTENT -->
+  <div class="content p-16">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <span class="mat-headline">Meus Bônus</span>
+            <div class="w-400 mat-elevation-z4" >
+                <mat-grid-list cols="3" rowHeight="100px" >
+                    <mat-grid-tile class="grey-300-bg">
+                        <mat-icon class="h1">attach_money</mat-icon>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="white-bg" colspan="2">
+                      <div fxLayout="column" fxLayoutAlign="center center">
+                          <span class="h6">Bônus a Receber (Mês Atual)</span>
+                          <span class="h1 mt-16 green-fg">R$ 1.000,00</span>
+                      </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+        
+        <div class="mat-header-row px-16" fxLayoutAlign="space-between center">
+          <span class="h2 red-fg">Extrato / <small>10 últimos registros</small></span>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+              <div class="example-container mat-elevation-z8">
+                <mat-table [dataSource]="dataSource" matSort>
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="descricao">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="60%"> Tipo de Registro </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="60%"> {{row.descricao}} </mat-cell>
+                  </ng-container>
+              
+                  
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="documento">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%"> Protocolo </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="20%"> {{row.documento}} </mat-cell>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="pagamento">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%"> Data / Hora </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="20%"> {{row.pagamento | date:'dd/MM/yyyy'}} </mat-cell>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="valor_pago">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%"> Valor(R$) </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="20%"> {{row.valor_pago | currency: 'BRL' }} </mat-cell>
+                  </ng-container>
+              
+                  <!-- Opcoes Column --> 
+                  <ng-container matColumnDef="acoes">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="60px">  </mat-header-cell>
+                    <mat-cell *matCellDef="let row;let i=index;" fxFlex="60px">
+                        <button matTooltip="detalhes" (click)="openDialog(i, row.descricao, row.documento, row.pagamento, row.valor_pago)"><mat-icon>search</mat-icon></button>
+                    </mat-cell>
+                  </ng-container>
+              
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    
+                  </mat-row>
+                  
+                </mat-table>
+                <mat-progress-bar *ngIf="isProgressBar"  class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+                <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+              </mat-paginator>
+              </div>
+  
+</div>

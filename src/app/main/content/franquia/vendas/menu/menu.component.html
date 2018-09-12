@@ -1,0 +1,32 @@
+<!--INÍCIO DO MENU -->
+<div class="row">
+<div fxFlex="50%">
+  <form action="">
+    <mat-form-field>
+    <mat-select placeholder="Linhas" (change)="onSelect($event)" name="linha">
+      <mat-option *ngFor="let linha of linhas" [value]="linha.id">{{linha.nome_linha}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-select placeholder="Produtos" (change)="onSelectpd($event)" name="produto">
+        <mat-option *ngFor="let produto of Produtos" [value]="produto.id">{{produto.nome}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+    <table class="table">
+      <tr>
+        <mt-menu-item
+          *ngFor="let item of menu"
+          [menuItem]="item" (add)="shoppingCart.addItem($event)" >
+        </mt-menu-item>
+      </tr>
+    </table>
+        
+  </div>
+  <div fxFlex="50%">
+    <mt-shopping-cart #shoppingCart></mt-shopping-cart>
+  </div>
+</div>
+
+
+<!-- FIM DO MENU -->

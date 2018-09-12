@@ -1,0 +1,67 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+<!-- CONTENT -->
+<div class="content p-16">
+        <div class="mat-header-row px-16" fxLayoutAlign="space-between">
+          <span class="mat-headline">VML</span>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+              
+               
+              <div class="example-container mat-elevation-z8">
+              
+                <mat-table [dataSource]="dataSource" matSort>
+                  <!-- Avatar Column -->
+                  <ng-container cdkColumnDef="avatar">
+                        <mat-header-cell *cdkHeaderCellDef fxFlex="60px"></mat-header-cell>
+                        <mat-cell *cdkCellDef="let row" fxFlex="60px">
+                            <img class="avatar" src="assets/images/avatars/profile.jpg"/>
+                        </mat-cell>
+                    </ng-container>  
+                  
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.id}} </mat-cell>
+                  </ng-container>
+              
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="nome">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="40%"> Nome </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="40%"> {{row.nome}} </mat-cell>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="percentual">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="30%"> Perc.(%) </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="30%">{{row.percentual}}<mat-progress-bar mode="determinate" value="{{row.percentual}}" color="{{row.barcolor}}"></mat-progress-bar></mat-cell>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="pontuacao">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Pontos Linha </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="10%" dir="rtl"> {{row.pontuacao | number }} </mat-cell>
+                  </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="max_linha">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Maximo Pontos </mat-header-cell>
+                        <mat-cell *matCellDef="let row" fxFlex="10%" dir="rtl"> {{row.max_linha | number:'3.2' }} </mat-cell>
+                      </ng-container>
+              
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    
+                  </mat-row>
+                  
+                </mat-table>
+                <mat-progress-bar *ngIf="isProgressBar"  class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+                <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+              </mat-paginator>
+              </div>
+  
+
+</div>

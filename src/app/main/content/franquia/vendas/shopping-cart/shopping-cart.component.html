@@ -1,0 +1,58 @@
+<!--INICIO DO CARRINHO-->
+<div fxLayout="column">
+<mat-card fxFlex="100%" class="amber-100-bg h-450">
+  <mat-card-header >
+      <mat-card-title>  
+          <mat-icon>shopping_cart</mat-icon><span class="mat-headline">LUXLIFE</span>
+      </mat-card-title>
+  
+      <mat-card-subtitle fxLayoutAlign="center">
+      <table [ngStyle]="{'border':'1pt solid'}" >
+          <tr>
+            <th class="w-150">N. da Fatura: 22323323233232</th> 
+            <th class="w-300" fxLayoutAlign="center">Franquia:<br> LOJA VIRTUAL</th>
+            <th class="w-150">Data da Venda: 10/09/2018</th> 
+          </tr>
+          
+        </table>
+      </mat-card-subtitle>
+</mat-card-header>
+
+  <!-- /.box-header -->
+  <mat-card-content class="h-200" fxLayoutAlign="center">
+
+    <div *ngIf="!items().length">
+      <p class="text-center">
+        Seu carrinho está vazio!
+      </p>
+    </div>
+    <div *ngIf="items().length" >
+      <span fxLayoutAlign="center"><strong>- ITENS -</strong></span>
+      <mat-divider></mat-divider>    
+        <table class="table" fxLayout="space-between end">
+          <tbody>
+          <tr *ngFor="let item of items()" [@row]="rowState">
+            <td class="w-600">{{item.menuItem.nome}}</td>
+            <td class="text-right w-100">{{item.quantity}}</td>
+            <td class="text-right w-100" >{{item.value() | currency: 'BRL'}}</td>
+            <td class="text-right w-100">
+              <a (click)="removeItem(item)"><mat-icon [ngStyle]="{'color':'red'}">delete_forever</mat-icon></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-footer class="p-16" dir="rtl">
+     <span class="mat-headline"><strong>Total:</strong></span> 
+     <span class="mat-headline">{{total() | currency: 'BRL'}}</span>
+  </mat-card-footer>
+</mat-card>
+
+<div class="p-8" dir="rtl">
+    <button mat-raised-button (click)="clear()" type="button" color="warn"><mat-icon>delete</mat-icon> Limpar</button>
+    <a [routerLink]="['/order']" mat-raised-button color="green-bg"><mat-icon>credit_card</mat-icon> Fechar Pedido</a>
+</div>
+</div>
+<!-- FIM DO CARRINHO -->

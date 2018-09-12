@@ -1,0 +1,53 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  
+    <div class="content px-16 py-24 px-sm-24 py-sm-32">
+        <div fxLayout="column">
+            <span class="mat-headline">Meus Ganhos</span>
+            <span class="mat-subheading-2 red-fg">Extrato Financeiro Detalhado</span>
+        </div>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let ganhos of dados" (opened)="getItens(ganhos.bonus_nome_var)">
+                      <mat-expansion-panel-header class="mat-red-700-bg">
+                        <mat-panel-title class="white-fg" >
+                          {{ganhos.bonus_nome_var.replace("_"," ") | uppercase}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-table [dataSource]="dataSource" matSort>
+                          <!-- ID Column -->
+                          <ng-container matColumnDef="bonus_nivel">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Nivel </mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.bonus_nivel}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="bonus_pontuacao">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="60%"> Pontuação </mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="60%"> {{row.bonus_pontuacao}} </mat-cell>
+                          </ng-container>
+        
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="bonus_percentual">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Percentual </mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.bonus_percentual}} </mat-cell>
+                          </ng-container>
+    
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="bonus_valor">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%"> Valor(R$) </mat-header-cell>
+                            <mat-cell *matCellDef="let row" fxFlex="20%"> {{row.bonus_valor | currency: 'BRL' }} </mat-cell>
+                          </ng-container>
+                      
+                          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                          <mat-row *matRowDef="let row; columns: displayedColumns;">
+                          </mat-row>
+                        </mat-table>
+                        <mat-paginator [length]="100"
+                          [pageSize]="5"
+                          [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator>
+            </mat-expansion-panel>
+        </mat-accordion>    
+          
+    </div>
+    
+    </div>

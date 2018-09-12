@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row" fxLayoutAlign="space-between center">
+        <div class="mat-display-1" mat-dialog-title>Registro N. {{data.documento}}</div>
+        <button mat-raised-button color="warn"><mat-icon>print</mat-icon>Imprimir</button>
+    </div>
+    <div mat-dialog-content>
+    <div class="row">
+          <span class="mat-title aligned-with-icon"><mat-icon>label</mat-icon>TRANSFERÊNCIA</span> 
+    </div>
+    <small>{{data.descricao}}</small>
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile>
+        <mat-grid-tile-header class="h6 white-bg black-fg" [style.border-bottom]="'2px solid #ddd'">Valor total do registro</mat-grid-tile-header>
+        <mat-grid-tile-footer class="h2 white-bg black-fg" fxLayoutAlign="center">{{data.valor | currency: 'BRL'}}</mat-grid-tile-footer>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-grid-tile-header class="h6 white-bg black-fg" [style.border-bottom]="'2px solid #ddd'">Data de Lançamento</mat-grid-tile-header>
+        <mat-grid-tile-footer class="h2 white-bg black-fg" fxLayoutAlign="center">{{data.data | date:'dd/MM/yyyy'}}</mat-grid-tile-footer>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-grid-tile-header class="h6 white-bg black-fg">
+          </mat-grid-tile-header>  
+          <mat-grid-tile-footer class="h6 white-bg black-fg" fxLayoutAlign="end center">
+              Código da Operação: 00023456
+              Código de Segurança: 3ZSDTRA453234HJKLKJ
+          </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+    
+      <span class="mat-title">Dados da Transferência</span> 
+      <p></p>
+      <mat-grid-list cols="2" rowHeight="30px">
+        <mat-grid-tile [style.border-bottom]="'1px solid #ddd'" fxLayoutAlign="start center">
+            Favorecido
+        </mat-grid-tile>
+        <mat-grid-tile [style.border-bottom]="'1px solid #ddd'" fxLayoutAlign="end center">
+            {{auth.getUser().nome}}
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="30px">
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              CPF
+          </mat-grid-tile>
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              {{auth.getUser().cpf}}
+          </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="30px">
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              Valor
+          </mat-grid-tile>
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              {{data.valor | currency: 'BRL'}}
+          </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="30px">
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              Banco
+          </mat-grid-tile>
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              {{auth.getUser().banco}}
+          </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="30px">
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              Agência
+          </mat-grid-tile>
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              {{auth.getUser().agencia}}
+          </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="30px">
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              Conta
+          </mat-grid-tile>
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              {{auth.getUser().conta}}
+          </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="30px">
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              Tipo de Conta
+          </mat-grid-tile>
+          <mat-grid-tile [style.border-bottom]="'1px solid #ddd'">
+              {{auth.getUser().tipo_conta}}
+          </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  
+    <div mat-dialog-actions dir="rtl">
+      <button mat-button (click)="onNoClick()" tabindex="-1">Fechar</button>
+    </div>
+  </div>

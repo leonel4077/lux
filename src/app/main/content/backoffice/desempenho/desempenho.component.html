@@ -1,0 +1,106 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+        <div class="content px-16 py-24 px-sm-24 py-sm-32" fxLayout="column">
+          <div class="mat-header-row px-9" fxLayoutAlign="space-between center">
+              <span class="mat-headline">Desempenho</span>
+          </div>
+          <div fxLayout="row">
+          <div>
+                <h3>Pontuação Detalhada dos Últimos Meses</h3>
+                        <ngx-charts-bar-vertical
+                        [view]="view"
+                        [scheme]="colorScheme"
+                        [results]="single"
+                        [gradient]="gradient"
+                        [xAxis]="showXAxis"
+                        [yAxis]="showYAxis"
+                        [legend]="showLegend"
+                        [showXAxisLabel]="showXAxisLabel"
+                        [showYAxisLabel]="showYAxisLabel"
+                        [xAxisLabel]="xAxisLabel"
+                        [yAxisLabel]="yAxisLabel"
+                        (select)="onSelect($event)">
+                      </ngx-charts-bar-vertical> 
+                
+            </div>
+            <div fxFlex="50">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-form-field class="input-full-width">
+                      <input matInput placeholder="Qualificação Atual" disable value="{{dados?.qualificacao_atual.qualificacao}}">
+                  </mat-form-field>
+                  <mat-form-field>
+                        <mat-select (change)="onSelect($event.value)" placeholder="Próxima Qualificação">
+                          <mat-option>None</mat-option>
+                          <mat-option value="7">BLUE DIAMOND</mat-option>
+                          <mat-option value="8">BLACK DIAMOND</mat-option>
+                          <mat-option value="9">ROYAL BLACK DIAMOND</mat-option>
+                          <mat-option value="10">IMPERIAL BLACK DIAMOND</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+                  <span><strong>Mínimo de Linhas:</strong>   {{dados?.quantidade_minima_linhas_funcionando
+  }}</span>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between"> 
+                  
+                </div>
+                <mat-divider></mat-divider>
+                      <mat-grid-list cols="2" rowHeight="40px" gutterSize="5px">
+                          <mat-grid-tile rowspan="3" class="light-blue-500-bg white-fg">
+                              <mat-grid-tile-header class="h6 px-8" fxLayoutAlign="center center">
+                                      Pontuação necessária para qualificação
+                              </mat-grid-tile-header>
+                              <div class="h1 mt-32" fxLayoutAlign="center end">
+                                      {{dados?.pontuacao_alcancar_qualificacao | number:'1.2-2'
+  }}
+                              </div>
+                          </mat-grid-tile>
+                          <mat-grid-tile rowspan="3" class="indigo-400-bg white-fg">
+                              <mat-grid-tile-header class="h6" fxLayoutAlign="center center">
+                              Pontuação maxima por linha
+                              </mat-grid-tile-header>
+                              <div class="h1 mt-32" fxLayoutAlign="center center">
+                              {{dados?.maximo_por_linha | number:'1.2-2'
+  }}
+                              </div>
+                          </mat-grid-tile>
+                          <mat-grid-tile rowspan="3" class="green-500-bg white-fg">
+                              <mat-grid-tile-header class="h6" fxLayoutAlign="center center">
+                              Pontuação considerada
+                              </mat-grid-tile-header>
+                              <div class="h1 mt-32" fxLayoutAlign="center center">
+                              {{dados?.pontuacao_considerada | number:'1.2-2'
+  }}
+                              </div>
+                          </mat-grid-tile>
+                          <mat-grid-tile rowspan="3" class="red-400-bg white-fg">
+                              <mat-grid-tile-header class="h6" fxLayoutAlign="center center">
+                              Pontuação não considerada
+                              </mat-grid-tile-header>
+                              <div class="h1 mt-32" fxLayoutAlign="center center">
+                              {{dados?.pontuacao_nao_considerada | number:'1.2-2'}}
+                              </div>
+                          </mat-grid-tile>
+                          <mat-grid-tile colspan="2" rowspan="3" class="amber-500-bg white-fg">
+                              <mat-grid-tile-header class="h6" fxLayoutAlign="center center">
+                              Pontuação que falta para qualificação
+                              </mat-grid-tile-header>
+                              <div class="h1 mt-32" fxLayoutAlign="center center">
+                              {{dados?.pontuacao_falta | number:'1.2-2'}}
+                              </div>
+                          </mat-grid-tile>
+  
+                      </mat-grid-list>    
+                      
+                  
+                   
+                      
+  
+                
+                
+                      
+                      
+                   
+     
+            </div>
+        </div> 
+        </div>
+        </div>

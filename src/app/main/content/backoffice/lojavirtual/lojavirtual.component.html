@@ -1,0 +1,68 @@
+<div id="ngx-datatable" class="page-layout carded left-sidenav" fusePerfectScrollbar>
+    <!-- TOP BACKGROUND -->
+    <div class="toplv-bg mat-red-500-bg"></div>
+    <!-- / TOP BACKGROUND -->
+    <mat-sidenav-container>
+
+            <!-- SIDENAV -->
+            <mat-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
+                         fuseMatSidenavHelper="carded-left-sidenav" mat-is-locked-open="gt-md">
+                <fuse-loja-main-sidenav></fuse-loja-main-sidenav>
+            </mat-sidenav>
+            <!-- / SIDENAV -->
+    
+            <!-- CENTER -->
+            <div class="center">
+    
+                <!-- CONTENT HEADER -->
+                <div class="header" fxLayout="row" fxLayoutAlign="start center">
+    
+                    <div class="search-wrapper mat-white-bg" fxFlex fxLayout="row" fxLayoutAlign="start center">
+    
+                        <button mat-button class="mat-icon-button sidenav-toggle"
+                                fuseMatSidenavToggler="carded-left-sidenav"
+                                fxHide.gt-md aria-label="Toggle Sidenav">
+                            <mat-icon>menu</mat-icon>
+                        </button>
+    
+                    </div>
+    
+                </div>
+                <!-- / CONTENT HEADER -->
+    
+                <!-- CONTENT CARD -->
+                <div class="content-card mat-white-bg" [ngClass]="{'current-todo-selected':currentTodo}">
+    
+                    <!-- CONTENT TOOLBAR -->
+                    <div class="toolbar px-24 py-8">
+    
+                        <div class="todo-selection" fxFlex="row" fxLayoutAlign="end center">
+                            <mat-icon>shopping_cart</mat-icon>
+                        </div>
+    
+                        <div *ngIf="currentTodo" fxHide.gt-lg>
+                            
+                        </div>
+    
+                    </div>
+                    <!-- / CONTENT TOOLBAR -->
+    
+                    <!-- CONTENT -->
+                    <div class="content" fxFlexAlign="row">
+    
+                        <fuse-loja-list fusePerfectScrollbar fxFlex></fuse-loja-list>
+    
+                        <!--<fuse-loja-details fusePerfectScrollbar fxFlex></fuse-loja-details>-->
+    
+                    </div>
+                    <!-- / CONTENT -->
+    
+                </div>
+                <!-- / CONTENT CARD -->
+    
+            </div>
+            <!-- / CENTER -->
+    
+        </mat-sidenav-container>
+
+</div>

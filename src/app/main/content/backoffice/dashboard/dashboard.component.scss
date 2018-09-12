@@ -1,0 +1,22 @@
+.search {
+    width: 100%;
+    max-width: 440px;
+    height: 50px;
+    line-height: 50px;
+    padding: 18px;
+
+    input {
+        height: 50px;
+        padding-left: 16px;
+        color: rgba(0, 0, 0, 0.54);
+        border: none;
+        outline: none;
+    }
+}
+.header {
+    height: 30px;
+    min-height: 30px;
+    max-height: 30px;
+    background: url('/assets/images/backgrounds/header-bg.png') no-repeat 0 45%;
+    background-size: 100% auto;
+}

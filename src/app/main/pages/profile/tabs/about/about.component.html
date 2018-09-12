@@ -1,0 +1,129 @@
+<div id="about" class="p-24" fxLayout="row" fxLayoutWrap>
+
+    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65"
+         *fuseIfOnDom [@animateStagger]="{value:'50'}">
+
+        <div class="profile-box info-box general" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+
+            <header class="mat-red-bg">
+                <div class="title">Informações Gerais</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title"></div>
+                    <div class="info"></div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title"></div>
+                    <div class="info"></div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title"></div>
+                    <div class="info location" fxLayout="row" fxLayoutAlign="start center"
+                         *ngFor="let location of about.general.locations">
+                        <span></span>
+                        <mat-icon class="s-16 ml-4">location_on</mat-icon>
+                    </div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title"></div>
+                    <div class="info"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="profile-box info-box work" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+
+            <header class="mat-red-bg">
+                <div class="title">Dados Bancários</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title"></div>
+                    <div class="info"></div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title"></div>
+                    <div class="info"></div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title"></div>
+                    <table class="info jobs">
+                        <tr class="job" *ngFor="let job of about.work.jobs">
+                            <td class="company"></td>
+                            <td class="date"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-sidebar" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="35"
+         *fuseIfOnDom [@animateStagger]="{value:'50'}">
+
+        <div class="profile-box friends" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+
+            <header class="mat-red-bg" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="title">Diretos</div>
+                <div class="more secondary-text">
+                    <span>Ativos 3</span>
+                </div>
+            </header>
+
+            <div class="content" fxLayout="row" fxLayoutWrap>
+                <div class="friend" fxFlex="20" *ngFor="let friend of about.friends">
+                    <img [src]="friend.avatar">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="profile-box groups" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+
+            <header class="mat-red-bg" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="title">Rede</div>
+                <div class="more secondary-text">
+                    <span>Total 38</span>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <div class="group" *ngFor="let group of about.groups" fxLayout="row"
+                     fxLayoutAlign="space-between center">
+
+                    <div fxLayout="row" fxLayoutAlign="start center">
+
+                        <img [src]="group.logo" class="logo" alt="{{group.name}}"/>
+
+                        <div>
+                            <div class="name"></div>
+                            <div class="category"></div>
+                            <div class="members"> </div>
+                        </div>
+                    </div>
+
+                    <button mat-icon-button aria-label="More">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

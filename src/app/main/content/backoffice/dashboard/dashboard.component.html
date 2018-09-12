@@ -1,0 +1,179 @@
+<div id="dashboard" class="page-layout simple right-sidenav" fxLayout="row">
+        <mat-sidenav-container>
+          <div class="center" fusePerfectScrollbar>
+              <!-- HEADER -->
+              <div class="mat-red-200-bg white-fg p-16" fxLayout="column" fxLayoutAlign="space-between">
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                      <span class="mat-subheading-1 black-fg" *fuseIfOnDom [@animate]="{value:'*',params:{x:'50px'}}"></span>
+                      <div class="search mat-white-bg mat-elevation-z4" flex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="black-fg">link</mat-icon>     
+                        <input placeholder="Link indicaçao - http://www.luxlife.com.br/id/5001" fxFlex>
+                      </div>
+                  </div>
+                  <div>
+                      <!--<span>Patrocinador: {{dados?.patrocinador.nome}}</span>
+                      <div fxLayout="row" fxLayoutAlign="center center">
+                            <span>Parabéns! Você está ativo este mês </span>
+                            <mat-icon class="lime-500-fg ml-8">thumb_up</mat-icon>
+                      </div>-->
+                  </div>
+              </div>
+              <!--/ HEADER -->
+      
+              <!-- CONTENT -->
+              <div class="content">
+                          <div class="widget-group p-12" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
+                              <!-- WIDGET 1 -->
+                              <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                                  <!-- Front -->
+                                  <div class="fuse-widget-front amber-500-bg mat-elevation-z2">
+                                      <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between" dir="rtl">
+                                          
+                                          <button mat-icon-button fuseWidgetToggle matTooltip="veja mais" >
+                                              <mat-icon>more_vert</mat-icon>
+                                          </button>
+                                      </div>
+                                      <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
+                                          <div class="white-fg font-size-36 line-height-36">
+                                              {{dados?.ganhos.total_mes_atual | currency:'BRL'}}
+                                          </div>
+                                          <div class="h5 secondary-text font-weight-500">Ganho mês atual</div>
+                                      </div>
+                                      
+                                  </div>
+                                  <!-- / Front -->
+                                  <!-- Back -->
+                                  <div class="fuse-widget-back p-16 pt-32 white-500-bg mat-elevation-z2">
+                                      <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                              aria-label="Flip widget">
+                                          <mat-icon class="s-16">close</mat-icon>
+                                      </button>
+                                      <div>
+                                          Coloque seu texto aqui!
+                                      </div>
+                                  </div>
+                                  <!-- / Back -->
+                              </fuse-widget>
+                              <!-- / WIDGET 1 -->
+                              <!-- WIDGET 2 -->
+                              <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                                  <!-- Front -->
+                                  <div class="fuse-widget-front indigo-300-bg mat-elevation-z2">
+                                      <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between" dir="rtl">
+                                          
+                                          <button mat-icon-button fuseWidgetToggle matTooltip="veja mais" >
+                                              <mat-icon>more_vert</mat-icon>
+                                          </button>
+                                      </div>
+                                      <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
+                                          <div class="white-fg font-size-36 line-height-36">
+                                              {{dados?.pontuacao.mes_anterior | number}}
+                                          </div>
+                                          <div class="h5 secondary-text font-weight-500">Pontuação mês anterior</div>
+                                      </div>
+                                      
+                                  </div>
+                                  <!-- / Front -->
+                                  <!-- Back -->
+                                  <div class="fuse-widget-back p-16 pt-32 white-500-bg mat-elevation-z2">
+                                      <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                              aria-label="Flip widget">
+                                          <mat-icon class="s-16">close</mat-icon>
+                                      </button>
+                                      <div>
+                                          Coloque seu texto aqui!
+                                      </div>
+                                  </div>
+                                  <!-- / Back -->
+                              </fuse-widget>
+                              <!-- / WIDGET 2 -->
+                              <!-- WIDGET 3 -->
+                              <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                                      <!-- Front -->
+                                      <div class="fuse-widget-front light-green-500-bg mat-elevation-z2">
+                                          <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between" dir="rtl">
+                                              <button mat-icon-button fuseWidgetToggle matTooltip="veja mais" >
+                                                  <mat-icon>more_vert</mat-icon>
+                                              </button>
+                                          </div>
+                                          <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
+                                              <div class="white-fg font-size-36 line-height-36">
+                                                {{dados?.pontuacao.mes_atual | number}}
+                                              </div>
+                                              <div class="h5 secondary-text font-weight-500">Pontuação mês atual</div>
+                                          </div>
+                                          
+                                      </div>
+                                      <!-- / Front -->
+                                      <!-- Back -->
+                                      <div class="fuse-widget-back p-16 pt-32 white-500-bg mat-elevation-z2">
+                                          <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                                  aria-label="Flip widget">
+                                              <mat-icon class="s-16">close</mat-icon>
+                                          </button>
+                                          <div>
+                                              Coloque seu texto aqui!
+                                          </div>
+                                      </div>
+                                      <!-- / Back -->
+                                  </fuse-widget>
+                                  <!-- / WIDGET 3 -->
+                              <!-- WIDGET 4 -->
+                              <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                                  <!-- Front -->
+                                  <div class="fuse-widget-front mat-red-400-bg mat-elevation-z2">
+                                      <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between" dir="rtl">
+                                          
+                                          <button mat-icon-button fuseWidgetToggle matTooltip="veja mais" >
+                                              <mat-icon>more_vert</mat-icon>
+                                          </button>
+                                      </div>
+                                      <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
+                                          <div class="white-fg font-size-36 line-height-36">
+                                            {{dados?.pontuacao.total | number}}
+                                          </div>
+                                          <div class="h5 secondary-text font-weight-500">Pontuação total</div>
+                                      </div>
+                                      
+                                  </div>
+                                  <!-- / Front -->
+                                  <!-- Back -->
+                                  <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                                      <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                              aria-label="Flip widget">
+                                          <mat-icon class="s-16">close</mat-icon>
+                                      </button>
+                                      <div>
+                                          Coloque seu texto aqui!
+                                      </div>
+                                  </div>
+                                  <!-- / Back -->
+                              </fuse-widget>
+                              <!-- / WIDGET 4 -->
+                              <!-- WIDGET 5 -->
+                              <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
+      
+                                  <!-- Front -->
+                                  <div class="fuse-widget-front grey-300-bg mat-elevation-z2">
+                                      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap>
+                                        <div class="product-image h-300"  fxLayoutAlign="center center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="100" >
+                                                <span class="mat-display-1 secondary-text">SLIDE INFORMATIVO</span>  
+                                            <!--<img class="preview" [src]="'assets/images/backgrounds/b01.jpg'" title="imagem">-->
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <!-- / Front -->
+      
+                              </fuse-widget>
+                              <!-- / WIDGET 5 -->
+                              
+      
+                            </div>
+                            
+      
+                                    
+              <!-- / CONTENT -->
+            </div>
+           </div> 
+        </mat-sidenav-container>
+      </div>  

@@ -1,0 +1,78 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
+ <!-- CONTENT -->
+ <div class="content p-16">
+        <div class="mat-header-row px-8" fxLayoutAlign="space-between">
+          <span class="mat-headline">Faturas</span>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+              
+               
+              <div class="example-container mat-elevation-z8">
+              
+                <mat-table [dataSource]="dataSource" matSort>
+                  
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="controle">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> N.Controle </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.controle}} </mat-cell>
+                  </ng-container>
+              
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="franquia">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="60%"> Franquia </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="60%"> {{row.franquia}} </mat-cell>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="cidade">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Cidade </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.cidade}} </mat-cell>
+                  </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="estado">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Estado </mat-header-cell>
+                        <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.estado}} </mat-cell>
+                      </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="tipo_venda">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Compra </mat-header-cell>
+                        <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.tipo_venda}} </mat-cell>
+                      </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="data_venda">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%"> Data da Compra </mat-header-cell>
+                        <mat-cell *matCellDef="let row" fxFlex="10%"> {{row.data_venda | date:'dd/MM/yyyy'}} </mat-cell>
+                      </ng-container>        
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="total_venda">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="20%"> Valor(R$) </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="20%"> {{row.total_venda | currency: 'BRL' }} </mat-cell>
+                  </ng-container>
+
+                  <!-- Opcoes Column --> 
+                  <ng-container matColumnDef="acoes">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="30px"> </mat-header-cell>
+                    <mat-cell *matCellDef="let row;let i=index;" fxFlex="30px">
+                        <button matTooltip="detalhes" (click)="openDialog(i, row.descricao, row.documento, row.pagamento, row.valor_pago)"><mat-icon>search</mat-icon></button>
+                    </mat-cell>
+                  </ng-container>
+              
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    
+                  </mat-row>
+                  
+                </mat-table>
+                <mat-progress-bar *ngIf="isProgressBar"  class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+                <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+              </mat-paginator>
+              </div>
+  
+
+</div>
